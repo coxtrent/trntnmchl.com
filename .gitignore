@@ -1,1 +1,3 @@
 /env/
+/bin/push_git
+/bin/push_heroku
