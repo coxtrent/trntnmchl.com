@@ -32,7 +32,7 @@ six==1.16.0
 snowballstemmer==2.2.0
 soupsieve==2.5
 tomlkit==0.12.1
--e git+ssh://git@github.com/coxtrent/trntnmchl.com.git@c71d6f463e3b015e24d54cf522dbdf4d4a7f3488#egg=trntnmchl
+-e git+https://github.com/coxtrent/trntnmchl.com.git@c71d6f463e3b015e24d54cf522dbdf4d4a7f3488#egg=trntnmchl
 urllib3==2.0.5
 Werkzeug==2.3.7
 wrapt==1.15.0
