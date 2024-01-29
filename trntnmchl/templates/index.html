@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <title>trenton michael</title>
     <link rel="icon" href="static/images/sunstone.PNG">
+    <script>
+        function changeImage() {
+            var image = document.getElementById('album_art');
+            image.style.opacity = 0;
+            setTimeout(function() {
+                image.src = "static/images/liteoatp.PNG";
+                image.style.opacity = 1;
+            }, 300);
+        }
+        </script>
+</head>
 <body style="background-color: #ffc9b0">
-    
-<img src="static/images/liteoatp.PNG" width="750" height="750" style="display: block; margin-left: auto; margin-right: auto; margin-top: 27px;">
+<div style="display: block; margin-left: auto; margin-right: auto; margin-top: 27px;">  
+<img id="album_art" src="static/images/liteoatp.PNG" width="750" onClick="changeImage()" height="750" style="display: block; margin-left: auto; margin-right: auto; margin-top: 27px; transition: opacity 0.3s;">
+</div>
 <!-- <h1 style="color: #9e1911; font-family: 'Courier New', Courier, monospace; display: block; margin-left: auto; margin-right: auto; margin-bottom: 50px; text-indent: 100px;">trenton michael</h1>-->
 <div style="text-align: center;">
     <a href="https://open.spotify.com/album/7z0PGr9yCAhStM8xNaL0Ub?si=R5ETFTEPQ-eNGj2N4HL_jw"> 
