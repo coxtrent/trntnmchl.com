@@ -40,8 +40,6 @@
             var img1 = new Image();
             var img2 = new Image();
             var img3 = new Image();
-            var bandcampLogo = document.getElementById("bandcamp");
-            var soundcloudLogo = document.getElementById("soundcloud");
 
             var loadImg1 = new Promise(function(resolve) {
                 img1.onload = resolve;
@@ -65,13 +63,12 @@
                 // fetch url and parse the suffix
                 var url = new URL(image.src);
                 var path = url.pathname;
-                
+
                 if(path == "/static/images/alt1.PNG") {
                 // if is alt album art, change to mario album art
                     setTimeout(function() {
                         // gradual fade effect
-                        bandcampLogo.style.filter = "";
-                        soundcloudLogo.style.filter = "";
+                        invertLogos(false);
                         image.src = img2.src;
                         document.body.classList.add('colorMario');
                         document.body.classList.remove('colorAlt1');
@@ -81,8 +78,7 @@
                 else if(path == "/static/images/IMG_2460.PNG") {
                 // if it is mario album art, change to main album art
                     setTimeout(function() {
-                        bandcampLogo.style.filter = "";
-                        soundcloudLogo.style.filter = "";
+                        invertLogos(false);
                         image.src = img1.src;
                         document.body.classList.remove('colorMario');
                         document.body.classList.remove('colorAlt1');
@@ -92,8 +88,7 @@
                 else {
                 // it must be main album art, change to alt album art
                         setTimeout(function() {
-                            bandcampLogo.style.filter = "invert(1)";
-                            soundcloudLogo.style.filter = "invert(1)";
+                            invertLogos(true);
                             image.src = img3.src;
                             document.body.classList.remove('colorMario');
                             document.body.classList.add('colorAlt1');
@@ -102,6 +97,19 @@
                 }
             })
         } 
+
+        function invertLogos(invert) {
+            var bandcampLogo = document.getElementById("bandcamp");
+            var soundcloudLogo = document.getElementById("soundcloud");
+            if(invert)  {
+                bandcampLogo.style.filter = "invert(1)";
+                soundcloudLogo.style.filter = "invert(1)";
+            }
+            else {
+                bandcampLogo.style.filter = "";
+                soundcloudLogo.style.filter = "";
+            }
+        }
         // function seeThrough()
        // wow |
       // wow \
