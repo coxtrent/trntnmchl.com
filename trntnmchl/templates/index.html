@@ -5,19 +5,52 @@
     <title>trenton michael</title>
     <link rel="icon" href="static/images/sunstone.PNG">
     <script>
-        function changeImage() {
+     //  
+    //  make album art briefly transparent      -_|  <-->  <-->  <-->  |_-    
+   //
+  //
+ //
+  //
+   //
+    //
+     //    ---|  <-->  <-->  <-->  |---
+        function seeThrough() {
             var image = document.getElementById('album_art');
             image.style.opacity = 0;
-            setTimeout(function() {
-                image.src = "static/images/liteoatp.PNG";
-                image.style.opacity = 1;
-            }, 250);
+            var url = new URL(image.src);
+            var path = url.pathname;
+            if(path == "/static/images/mario.jpeg") {
+                setTimeout(function() {
+                    image.src = "static/images/liteoatp.PNG";
+                    image.style.opacity = 1;
+                }, 250);
+            }
+            else {
+                setTimeout(function() {
+                    image.src = "static/images/mario.jpeg";
+                    image.style.opacity = 1;
+                }, 250);
+            }
+        } 
+        // function seeThrough()
+       // wow |
+      // wow \
+     // wow —
+    // wow /
+   // wow |
+  // wow \
+ // wow —
+// wow /change album art on click 
+        function changeImage() {
+            var image = document.getElementById('album_art');
+            image.src = "static/images/liteoatp.PNG";
         }
+        //
         </script>
 </head>
 <body style="background-color: #ffc9b0">
-<div style="display: block; margin-left: auto; margin-right: auto; margin-top: 27px;">
-<img id="album_art" src="static/images/liteoatp.PNG" width="750" onClick="changeImage()" height="750" style="display: block; margin-left: auto; margin-right: auto; margin-top: 27px; transition: opacity 0.25s;">
+<div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;">
+<img id="album_art" src="static/images/liteoatp.PNG" width="750" onClick="seeThrough()" height="750" style="display: block; margin-left: auto; margin-right: auto; margin-top: 27px; transition: opacity 0.25s;">
 </div>
 <!-- <h1 style="color: #9e1911; font-family: 'Courier New', Courier, monospace; display: block; margin-left: auto; margin-right: auto; margin-bottom: 50px; text-indent: 100px;">trenton michael</h1>-->
 <div style="text-align: center;">
@@ -36,6 +69,5 @@
     <a href="https://www.youtube.com/channel/UCLimBHin2APkVTufIamLEOg" style="text-decoration: none; font-size: 0;">
         <img src="static/images/youtube_logo.png" width="100" height="69.21875" style="display: inline-block;">
         </a>
-   
 </div>
 </html>
