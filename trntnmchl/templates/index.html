@@ -6,8 +6,20 @@
     background-color: #ffc9b0; /* initial color */
     transition: background-color 0.5s ease; /* transition effect */
         }
-        body.newColor {
+        body.colorMario {
             background-color: #ffffff; /* new color */
+        }
+        body.colorAlt1 {
+            background-color: #000000;
+        }
+        body.colorAlt2 {
+            background-color: #a7ffe1;
+        }
+        body.colorAlt3 {
+            background-color: #ffe909;
+        }
+        body.colorAlt4 {
+            background-color: #ffffff;
         }
     </style>
     <meta charset="UTF-8">
@@ -24,8 +36,13 @@
     //
      //    ---|  <-->  <-->  <-->  |---
         function seeThrough() {
+            // pre-load all images
             var img1 = new Image();
             var img2 = new Image();
+            var img3 = new Image();
+            var bandcampLogo = document.getElementById("bandcamp");
+            var soundcloudLogo = document.getElementById("soundcloud");
+
             var loadImg1 = new Promise(function(resolve) {
                 img1.onload = resolve;
                 img1.src = "static/images/liteoatp.PNG";
@@ -36,24 +53,52 @@
                 img2.src = "static/images/IMG_2460.PNG";
             });
 
-            Promise.all([loadImg1, loadImg2]).then(function() {
+            var loadImg3 = new Promise(function(resolve) {
+                img3.onload = resolve;
+                img3.src = "static/images/alt1.PNG";
+            });
+
+            Promise.all([loadImg1, loadImg2, loadImg3]).then(function() {
+                // await promises, fetch album_art
                 var image = document.getElementById('album_art');
                 image.style.opacity = 0;
+                // fetch url and parse the suffix
                 var url = new URL(image.src);
                 var path = url.pathname;
-                if(path == "/static/images/IMG_2460.PNG") {
+                
+                if(path == "/static/images/alt1.PNG") {
+                // if is alt album art, change to mario album art
                     setTimeout(function() {
+                        // gradual fade effect
+                        bandcampLogo.style.filter = "";
+                        soundcloudLogo.style.filter = "";
+                        image.src = img2.src;
+                        document.body.classList.add('colorMario');
+                        document.body.classList.remove('colorAlt1');
+                        image.style.opacity = 1;
+                    }, 500);
+                }
+                else if(path == "/static/images/IMG_2460.PNG") {
+                // if it is mario album art, change to main album art
+                    setTimeout(function() {
+                        bandcampLogo.style.filter = "";
+                        soundcloudLogo.style.filter = "";
                         image.src = img1.src;
-                        document.body.classList.remove('newColor');
+                        document.body.classList.remove('colorMario');
+                        document.body.classList.remove('colorAlt1');
                         image.style.opacity = 1;
                     }, 500);
                 }
                 else {
-                    setTimeout(function() {
-                        image.src = img2.src;
-                        document.body.classList.add('newColor');
-                        image.style.opacity = 1;
-                    }, 500);
+                // it must be main album art, change to alt album art
+                        setTimeout(function() {
+                            bandcampLogo.style.filter = "invert(1)";
+                            soundcloudLogo.style.filter = "invert(1)";
+                            image.src = img3.src;
+                            document.body.classList.remove('colorMario');
+                            document.body.classList.add('colorAlt1');
+                            image.style.opacity = 1;
+                        }, 500);
                 }
             })
         } 
@@ -80,19 +125,19 @@
 <!-- <h1 style="color: #9e1911; font-family: 'Courier New', Courier, monospace; display: block; margin-left: auto; margin-right: auto; margin-bottom: 50px; text-indent: 100px;">trenton michael</h1>-->
 <div style="text-align: center;">
     <a href="https://open.spotify.com/album/7z0PGr9yCAhStM8xNaL0Ub?si=R5ETFTEPQ-eNGj2N4HL_jw"style="text-decoration: none; font-size: 0;"> 
-        <img src="static/images/spotify_logo.png" width="100" height="100" style="display: inline-block; margin-right: 50px;">
+        <img id="spotify" src="static/images/spotify_logo.png" width="100" height="100" style="display: inline-block; margin-right: 50px;">
     </a>
     <a href="https://music.apple.com/us/album/life-in-the-eyes-of-a-teenage-philosopher/1635781143"style="text-decoration: none; font-size: 0;">
-    <img src="static/images/red_apple.PNG" width="100" height="100" style="display: inline-block; margin-right: 50px;">
+    <img id="apple" src="static/images/red_apple.PNG" width="100" height="100" style="display: inline-block; margin-right: 50px;">
     </a>
     <a href="https://trentonmichael.bandcamp.com/album/life-in-the-eyes-of-a-teenage-philosopher"style="text-decoration: none; font-size: 0;"> 
-        <img src="static/images/bandcamp-logo.svg" width="90" height="90" style="display: inline-block; margin-right: 50px;">
+        <img id = "bandcamp" src="static/images/bandcamp-logo.svg" width="90" height="90" style="display: inline-block; margin-right: 50px;">
     </a>
     <a href="https://soundcloud.com/trentonmichael/sets/life-in-the-eyes-of-a-teenage-philosopher"style="text-decoration: none; font-size: 0;">
-    <img src="static/images/soundcloud.svg" width="100" height="100" style="display: inline-block; margin-right: 50px;">
+    <img id="soundcloud" src="static/images/soundcloud.svg" width="100" height="100" style="display: inline-block; margin-right: 50px;">
     </a>
     <a href="https://www.youtube.com/channel/UCLimBHin2APkVTufIamLEOg" style="text-decoration: none; font-size: 0;">
-        <img src="static/images/youtube_logo.png" width="100" height="69.21875" style="display: inline-block;">
+        <img id="youtube" src="static/images/youtube_logo.png" width="100" height="69.21875" style="display: inline-block;">
         </a>
 </div>
 </body>
