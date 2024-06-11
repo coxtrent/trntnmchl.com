@@ -5,15 +5,14 @@ URLs include:
 /
 """
 import flask
-import os
-from flask_talisman import Talisman
 import trntnmchl
 
 @trntnmchl.app.before_request
 def before_request():
-    """Set security headers."""
-    if 'DYNO' in os.environ:  # only trigger Talisman if the app is running on Heroku
-        Talisman(trntnmchl.app)
+    if not flask.request.is_secure:
+        url = flask.request.url.replace('http://', 'https://', 1)
+        code = 301
+        return flask.redirect(url, code=code)
 
 @trntnmchl.app.route('/')
 def show_index():
