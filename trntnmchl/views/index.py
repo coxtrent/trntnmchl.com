@@ -9,8 +9,11 @@ import os
 from flask_talisman import Talisman
 import trntnmchl
 
-if 'DYNO' in os.environ:  # only trigger Talisman if the app is running on Heroku
-    Talisman(trntnmchl.app)
+@trntnmchl.app.before_request
+def before_request():
+    """Set security headers."""
+    if 'DYNO' in os.environ:  # only trigger Talisman if the app is running on Heroku
+        Talisman(trntnmchl.app)
 
 @trntnmchl.app.route('/')
 def show_index():
