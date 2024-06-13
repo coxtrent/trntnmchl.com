@@ -1,4 +1,6 @@
 from trntnmchl import app
 
 if __name__ == "__main__":
-    app.run()
+    from gunicorn.app.wsgiapp import WSGIApplication
+    application = WSGIApplication()
+    application.run()
