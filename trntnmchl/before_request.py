@@ -11,12 +11,10 @@ import trntnmchl
 def before_request():
     """Redirect to HTTPS and remove www."""
     url = None
-    if request.url.startswith('http://'):
+    if request.headers.get('X-Forwarded-Proto') == 'http':
         url = request.url.replace('http://', 'https://', 1)
-        code = 301
-    if request.url.startswith('https://www.'):
-        url = request.url.replace('https://www.', 'https://', 1)
-        code = 301
+    if 'www.' in request.url:
+        url = request.url.replace('www.', '', 1)
 
     if url is not None:
-        return redirect(url, code=code)
+        return redirect(url, code=301)
