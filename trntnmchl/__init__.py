@@ -5,7 +5,7 @@ from flask_talisman import Talisman
 # app is a single object used by all the code modules in this package
 app = flask.Flask(__name__)  # pylint: disable=invalid-name
 
-W# Wrap Flask app with Talisman
+# Wrap Flask app with Talisman
 Talisman(app, content_security_policy=None)
 
 
