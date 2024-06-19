@@ -26,7 +26,6 @@ pycodestyle==2.11.0
 pydocstyle==6.3.0
 pylint==2.17.5
 pytest==7.4.2
-python==3.12.4
 python-dateutil==2.8.2
 PyYAML==6.0.1
 requests==2.31.0
