@@ -6,39 +6,30 @@
         margin-top: 20px; /* Adjust the value as needed */
         }
         body {
-    background-color: #2a9cb1; /* initial color */
+    background-color: #ffffff; /*2a9cb1; initial color */
     transition: background-color 0.5s ease; /* transition effect */
         }
-        body.colorMario {
+        body.colorMain {
             background-color: #ffffff; /* new color */
         }
-        body.colorAlt1 {
-            background-color: #000000;
+        body.colorYellow {
+            background-color: #ec865d;
         }
-        body.colorAlt2 {
-            background-color: #a7ffe1;
+        body.colorPink {
+            background-color: #d68c9c;
         }
-        body.colorAlt3 {
-            background-color: #ffe909;
+        body.colorGreen {
+            background-color: #298e5e;
         }
-        body.colorAlt4 {
-            background-color: #ffffff;
+        body.colorTan {
+            background-color: #eac9a8;
         }
     </style>
     <meta charset="UTF-8">
-    <title>trenton michael</title>
-    <link rel="icon" href="static/images/asd.PNG">
+    <title>sunboyforever</title>
+    <link rel="icon" href="static/images/sunstone.PNG">
     <script>
-     //  
-    //  make album art briefly transparent      -_|  <-->  <-->  <-->  |_-    
-   //
-  // and then change image to another album art
- //
-  //
-   //
-    //
-     //    ---|  <-->  <-->  <-->  |---
-        function seeThrough() {
+        function changeArt() {
             // pre-load all images
             var img1 = new Image();
             var img2 = new Image();
@@ -47,22 +38,22 @@
 
             var loadImg1 = new Promise(function(resolve) {
                 img1.onload = resolve;
-                img1.src = "static/images/see-you-in-june-art.PNG";
+                img1.src = "static/images/see-you-in-june-yellow.png";
             });
 
             var loadImg2 = new Promise(function(resolve) {
                 img2.onload = resolve;
-                img2.src = "static/images/see-you-in-june-1.PNG";
+                img2.src = "static/images/see-you-in-june-green.png";
             });
 
             var loadImg3 = new Promise(function(resolve) {
                 img3.onload = resolve;
-                img3.src = "static/images/see-you-in-june-2.PNG";
+                img3.src = "static/images/see-you-in-june-pink.png";
             });
 
             var loadImg4 = new Promise(function(resolve) {
                 img4.onload = resolve;
-                img4.src = "static/images/see-you-in-june-3.PNG";
+                img4.src = "static/images/see-you-in-june-tan.png";
             });
 
             Promise.all([loadImg1, loadImg2, loadImg3, loadImg4]).then(function() {
@@ -72,38 +63,42 @@
                 // fetch url and parse the suffix
                 var url = new URL(image.src);
                 var path = url.pathname;
-
-                if(path == "/static/images/see-you-in-june-1.PNG") {
+                if(path == "/static/images/see-you-in-june-green.png") {
                 // if is alt album art, change to mario album art
                     setTimeout(function() {
                         image.src = img3.src;
                         image.style.opacity = 1;
-                    }, 50);
+                        document.body.style.backgroundColor = "#d68c9c";
+                    }, 100);
                 }
-                else if(path == "/static/images/see-you-in-june-2.PNG") {
+                else if(path == "/static/images/see-you-in-june-pink.png") {
                 // if it is mario album art, change to main album art
                     setTimeout(function() {
                         image.src = img4.src;
                         image.style.opacity = 1;
-                    }, 50);
+                        document.body.style.backgroundColor = "#eac9a8";
+                    }, 100);
                 }
-                else if(path == "/static/images/see-you-in-june-3.PNG") {
+                else if(path == "/static/images/see-you-in-june-tan.png") {
                 // if it is mario album art, change to main album art
                     setTimeout(function() {
                         image.src = img1.src;
                         image.style.opacity = 1;
-                    }, 50);
+                        document.body.style.backgroundColor = "#ec865d";
+                    }, 100);
                 }
                 else {
                 // it must be main album art, change to alt album art
                     setTimeout(function() {
                         image.src = img2.src;
                         image.style.opacity = 1;
-                    }, 50);
+                        document.body.style.backgroundColor = "#298e5e";
+                    }, 100);
                 }
             })
         } 
 
+        // just makes thhe bandcamp and soundcloud logos white instead of black if true, else vice versa
         function invertLogos(invert) {
             var bandcampLogo = document.getElementById("bandcamp");
             var soundcloudLogo = document.getElementById("soundcloud");
@@ -117,10 +112,44 @@
             }
         }
 
+        /* ONLOAD ANIMATION */ 
         window.onload = function() {
+            // invert logos bc theyre just better that way
             invertLogos(true);
+            // get elements
+            var album_art = document.getElementById('album_art');
+            var links = document.getElementById('links');
+
+            // external setTimeout -- fade in the cream background color and the sunboy logo
+            setTimeout(function() {
+                document.body.style.backgroundColor = "#fffaaf";
+                album_art.style.opacity = 1;
+                // internal setTimeout 1 -- fade the background color and the sunboy logo out
+                setTimeout(function() {
+                document.body.style.backgroundColor = "#ffffff";
+                album_art.style.opacity = 0;
+                }, 2500);
+            }, 500);
+            // internal setTimeout 2 -- fetch the album art and change it 
+            setTimeout(function() {
+            var real_art = new Image();
+                var load_real_art = new Promise(function(resolve) {
+                    real_art.onload = resolve;
+                    real_art.src = "static/images/see-you-in-june-yellow.png";
+                });
+            Promise.all([load_real_art]).then(function() {
+                        album_art.src = real_art.src;
+                    });
+                }, 4500);
+            // internal setTimeout 3 -- actually fade in the links, album art, and background
+            setTimeout(function() {
+                album_art.style.opacity = 1;
+                links.style.opacity = 1;
+                document.body.style.backgroundColor = "#ec865d"
+                album_art.setAttribute('onClick', 'changeArt()');
+            }, 5000);
         }
-        // function seeThrough()
+        // function changeArt()
        // wow |
       // wow \
      // wow —
@@ -133,11 +162,11 @@
         </script>
 </head>
 <body> 
-<div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;"> <!--onClick="seeThrough()"-->
-<img id="album_art" src="static/images/see-you-in-june-1.PNG"   width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 50px; transition: opacity 0.25s;">
+<div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;"> 
+<img id="album_art" src="static/images/sunstone.png" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 50px; transition: all 1.5s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
 </div>
 <div class="spacer"></div> <!-- Spacer div -->
-<div style="text-align: center;">
+<div id="links" style="text-align: center; transition: all 1.5s ease-in-out; opacity: 0;">
     <a href="https://open.spotify.com/album/5d4G6x7ND5BZmHTU4dM8oB?si=1wJ0gyuVRg6upd__tUdOAQ"style="text-decoration: none; font-size: 0;"> 
         <img id="spotify" src="static/images/spotify_logo.png" width="100" height="100" style="display: inline-block; margin-right: 50px;">
     </a>
