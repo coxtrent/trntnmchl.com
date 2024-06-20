@@ -27,7 +27,7 @@
     </style>
     <meta charset="UTF-8">
     <title>sunboyforever</title>
-    <link rel="icon" href="static/images/sunstone.PNG">
+    <link rel="icon" href="static/images/sunstone.png">
     <script>
         function changeArt() {
             // pre-load all images
@@ -69,7 +69,7 @@
                         image.src = img3.src;
                         image.style.opacity = 1;
                         document.body.style.backgroundColor = "#d68c9c";
-                    }, 100);
+                    }, 250);
                 }
                 else if(path == "/static/images/see-you-in-june-pink.png") {
                 // if it is mario album art, change to main album art
@@ -77,7 +77,7 @@
                         image.src = img4.src;
                         image.style.opacity = 1;
                         document.body.style.backgroundColor = "#eac9a8";
-                    }, 100);
+                    }, 250);
                 }
                 else if(path == "/static/images/see-you-in-june-tan.png") {
                 // if it is mario album art, change to main album art
@@ -85,7 +85,7 @@
                         image.src = img1.src;
                         image.style.opacity = 1;
                         document.body.style.backgroundColor = "#ec865d";
-                    }, 100);
+                    }, 250);
                 }
                 else {
                 // it must be main album art, change to alt album art
@@ -93,12 +93,12 @@
                         image.src = img2.src;
                         image.style.opacity = 1;
                         document.body.style.backgroundColor = "#298e5e";
-                    }, 100);
+                    }, 250);
                 }
             })
         } 
 
-        // just makes thhe bandcamp and soundcloud logos white instead of black if true, else vice versa
+        // just makes the bandcamp and soundcloud logos white instead of black if true, else vice versa
         function invertLogos(invert) {
             var bandcampLogo = document.getElementById("bandcamp");
             var soundcloudLogo = document.getElementById("soundcloud");
@@ -128,8 +128,8 @@
                 setTimeout(function() {
                 document.body.style.backgroundColor = "#ffffff";
                 album_art.style.opacity = 0;
-                }, 2500);
-            }, 500);
+                }, 2250);
+            }, 250);
             // internal setTimeout 2 -- fetch the album art and change it 
             setTimeout(function() {
             var real_art = new Image();
@@ -139,26 +139,20 @@
                 });
             Promise.all([load_real_art]).then(function() {
                         album_art.src = real_art.src;
+                        // internal setTimeout 3 -- actually fade in the links, album art, and background
+                        setTimeout(function() {
+                            album_art.style.opacity = 1;
+                            links.style.opacity = 1;
+                            document.body.style.backgroundColor = "#ec865d"
+                            setInterval(changeArt, 1600);
+                        }, 1500);
                     });
-                }, 4500);
-            // internal setTimeout 3 -- actually fade in the links, album art, and background
-            setTimeout(function() {
-                album_art.style.opacity = 1;
-                links.style.opacity = 1;
-                document.body.style.backgroundColor = "#ec865d"
-                album_art.setAttribute('onClick', 'changeArt()');
-            }, 5000);
+
+                }, 3500);
+
+
         }
-        // function changeArt()
-       // wow |
-      // wow \
-     // wow —
-    // wow /
-   // wow |
-  // wow \
- // wow —
-// wow /change album art on click 
-        //
+
         </script>
 </head>
 <body> 
