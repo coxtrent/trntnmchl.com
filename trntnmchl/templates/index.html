@@ -24,6 +24,28 @@
         body.colorTan {
             background-color: #eac9a8;
         }
+        #album_art {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 50px auto;
+            transition: all 1s ease-in-out;
+            opacity: 0;
+        }
+
+        #links img {
+            max-width: 100px;
+            height: auto;
+            display: inline-block;
+            margin-right: 5%;
+        }
+
+        @media (max-width: 600px) {
+            #links img {
+                max-width: 80px;
+                margin-right: 2%;
+            }
+        }
     </style>
     <meta charset="UTF-8">
     <title>sunboyforever</title>
@@ -144,7 +166,7 @@
                             album_art.style.opacity = 1;
                             links.style.opacity = 1;
                             document.body.style.backgroundColor = "#ec865d"
-                            setInterval(changeArt, 1600);
+                            setInterval(changeArt, 1300);
                         }, 1500);
                     });
 
@@ -157,7 +179,7 @@
 </head>
 <body> 
 <div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;"> 
-<img id="album_art" src="static/images/sunstone.png" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 50px; transition: all 1.5s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
+<img id="album_art" src="static/images/sunstone.png" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 50px; transition: all 1s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
 </div>
 <div class="spacer"></div> <!-- Spacer div -->
 <div id="links" style="text-align: center; transition: all 1.5s ease-in-out; opacity: 0;">
