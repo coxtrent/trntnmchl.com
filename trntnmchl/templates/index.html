@@ -92,22 +92,22 @@
 
             var loadImg1 = new Promise(function(resolve) {
                 img1.onload = resolve;
-                img1.src = "static/images/see-you-in-june-yellow.png";
+                img1.src = "static/images/see-you-in-june-yellow.webp";
             });
 
             var loadImg2 = new Promise(function(resolve) {
                 img2.onload = resolve;
-                img2.src = "static/images/see-you-in-june-green.png";
+                img2.src = "static/images/see-you-in-june-green.webp";
             });
 
             var loadImg3 = new Promise(function(resolve) {
                 img3.onload = resolve;
-                img3.src = "static/images/see-you-in-june-pink.png";
+                img3.src = "static/images/see-you-in-june-pink.webp";
             });
 
             var loadImg4 = new Promise(function(resolve) {
                 img4.onload = resolve;
-                img4.src = "static/images/see-you-in-june-tan.png";
+                img4.src = "static/images/see-you-in-june-tan.webp";
             });
 
             Promise.all([loadImg1, loadImg2, loadImg3, loadImg4]).then(function() {
@@ -118,7 +118,7 @@
                 setInterval(function() {
                 var url = new URL(image.src);
                 var path = url.pathname;
-                if(path == "/static/images/see-you-in-june-green.png") {
+                if(path == "/static/images/see-you-in-june-green.webp") {
                 // if is alt album art, change to mario album art
                     setTimeout(function() {
                         image.src = img3.src;
@@ -126,7 +126,7 @@
                         document.body.style.backgroundColor = "#d68c9c";
                     }, 250);
                 }
-                else if(path == "/static/images/see-you-in-june-pink.png") {
+                else if(path == "/static/images/see-you-in-june-pink.webp") {
                 // if it is mario album art, change to main album art
                     setTimeout(function() {
                         image.src = img4.src;
@@ -134,7 +134,7 @@
                         document.body.style.backgroundColor = "#eac9a8";
                     }, 250);
                 }
-                else if(path == "/static/images/see-you-in-june-tan.png") {
+                else if(path == "/static/images/see-you-in-june-tan.webp") {
                 // if it is mario album art, change to main album art
                     setTimeout(function() {
                         image.src = img1.src;
@@ -191,7 +191,7 @@
             var real_art = new Image();
                 var load_real_art = new Promise(function(resolve) {
                     real_art.onload = resolve;
-                    real_art.src = "static/images/see-you-in-june-yellow.png";
+                    real_art.src = "static/images/see-you-in-june-yellow.webp";
                 });
             Promise.all([load_real_art]).then(function() {
                         album_art.src = real_art.src;
