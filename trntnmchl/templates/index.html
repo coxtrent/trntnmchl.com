@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <style>
+
         .spacer {
         margin-top: 20px; /* Adjust the value as needed */
         }
@@ -31,6 +32,37 @@
             margin: 50px auto;
             transition: all 1s ease-in-out;
             opacity: 0;
+        }        
+        /* Style the navigation menu */
+        .navbar {
+            position: fixed; /* Fixed position */
+            top: 500; /* Stick it to the top */
+            right: 0; /* Stick it to the right side */
+            opacity: 0;
+            height: 100%; /* Full height */
+            width: 150px; /* Fixed width, adjust as needed */
+            background-color: rgba(0, 0, 0, 0);
+            transition: all 1s ease-in-out;
+/*             background-color: #ffaaaa; Dark background */
+            z-index: 1000; /* Ensure it stays on top of other content */
+            pointer-events: none; /* Disable mouse events before page load, dynamically enables after.*/
+        }
+
+        /* Navigation links */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transition: all 0.25s ease-in-out;
+            color: white;
         }
 
         #links img {
@@ -83,6 +115,7 @@
                 var image = document.getElementById('album_art');
                 image.style.opacity = 0;
                 // fetch url and parse the suffix
+                setInterval(function() {
                 var url = new URL(image.src);
                 var path = url.pathname;
                 if(path == "/static/images/see-you-in-june-green.png") {
@@ -117,6 +150,7 @@
                         document.body.style.backgroundColor = "#298e5e";
                     }, 250);
                 }
+            }, 1250);
             })
         } 
 
@@ -163,13 +197,15 @@
                         album_art.src = real_art.src;
                         // internal setTimeout 3 -- actually fade in the links, album art, and background
                         setTimeout(function() {
+                            var navbar = document.querySelector('.navbar'); 
                             album_art.style.opacity = 1;
                             links.style.opacity = 1;
                             document.body.style.backgroundColor = "#ec865d"
-                            setInterval(changeArt, 1750);
+                            navbar.style.opacity = '1';
+                            navbar.style.pointerEvents = 'auto'; // Make the navbar clickable
                         }, 1500);
+                        changeArt();
                     });
-
                 }, 3500);
 
 
@@ -178,6 +214,13 @@
         </script>
 </head>
 <body> 
+<div class="navbar">
+    <a href="/">homepage</a>
+    <a href="/about">my music</a>
+    <a href="/cs">software dev</a>
+    <a href="/design">graphic design</a>
+    <a href="/shop">shop</a>
+</div>
 <div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;"> 
 <img id="album_art" src="static/images/sunstone.png" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 50px; transition: all 1s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
 </div>
