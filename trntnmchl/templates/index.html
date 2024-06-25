@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
     <style>
-
-        .spacer {
-        margin-top: 20px; /* Adjust the value as needed */
-        }
+ 
         body {
     background-color: #ffffff; /*2a9cb1; initial color */
     transition: background-color 0.5s ease; /* transition effect */
@@ -33,37 +30,6 @@
             transition: all 1s ease-in-out;
             opacity: 0;
         }        
-        /* Style the navigation menu */
-        .navbar {
-            position: fixed; /* Fixed position */
-            top: 500; /* Stick it to the top */
-            right: 0; /* Stick it to the right side */
-            opacity: 0;
-            height: 100%; /* Full height */
-            width: 150px; /* Fixed width, adjust as needed */
-            background-color: rgba(0, 0, 0, 0);
-            transition: all 1s ease-in-out;
-/*             background-color: #ffaaaa; Dark background */
-            z-index: 1000; /* Ensure it stays on top of other content */
-            pointer-events: none; /* Disable mouse events before page load, dynamically enables after.*/
-        }
-
-        /* Navigation links */
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-
-        /* Change color on hover */
-        .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            transition: all 0.25s ease-in-out;
-            color: white;
-        }
 
         #links img {
             max-width: 100px;
@@ -82,7 +48,9 @@
     <meta charset="UTF-8">
     <title>sunboyforever.</title>
     <link rel="icon" href="static/images/sunstone.png">
+    <link rel="stylesheet" href="static/css/style.css">
     <script>
+
         function changeArt() {
             // pre-load all images
             var img1 = new Image();
@@ -167,9 +135,16 @@
                 soundcloudLogo.style.filter = "";
             }
         }
+        
 
         /* ONLOAD ANIMATION */ 
         window.onload = function() {
+            // make navbar invisible and unclickable at start
+            var navbar = document.querySelector('.navbar');
+            navbar.style.opacity = '0';
+            navbar.style.pointerEvents = 'none';
+            var body = document.querySelector('body');
+            body.style.marginRight = '0px'; // reset margin-right to 0
             // invert logos bc theyre just better that way
             invertLogos(true);
             // get elements
@@ -203,11 +178,11 @@
                             document.body.style.backgroundColor = "#ec865d"
                             navbar.style.opacity = '1';
                             navbar.style.pointerEvents = 'auto'; // Make the navbar clickable
+                            body.style.marginRight = '150px'; // reset margin-right to 150px
                         }, 1500);
                         changeArt();
                     });
                 }, 3500);
-
 
         }
 

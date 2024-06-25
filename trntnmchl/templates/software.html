@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/adjustNavbar.js"></script>
+    <script>
+        window.onload = function() {
+            makeNavbarVisible();
+        }
+    </script>
+</head>
 <body>
+{% include 'navbar.html' %}
     <div>
         <h1 id="top">computer science portfolio</h1>
         <p>This is a portfolio of my computer science experience and projects.

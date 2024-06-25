@@ -1,0 +1,42 @@
+        body {
+            font-family: monospace;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #000000;
+            margin-right: 150px;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Style the navigation menu */
+        .navbar {
+            position: fixed; /* Fixed position */
+            top: 50px; /* Stick it to the top */
+            right: 0; /* Stick it to the right side */
+            opacity: 0;
+            height: 100%; /* Full height */
+            width: 150px; /* Fixed width, adjust as needed */
+            background-color: rgba(0, 0, 0, 0);
+            transition: all 0.5s ease-in-out;
+            z-index: 1000; /* Ensure it stays on top of other content */
+            pointer-events: auto; /* Disable mouse events before page load, dynamically enables after.*/
+            font-family: monospace;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.75); /* x-offset, y-offset, blur radius, color */
+
+        }
+        /* Navigation links */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.50);
+            transition: all 0.25s ease-in-out;
+            color: white;
+        }
