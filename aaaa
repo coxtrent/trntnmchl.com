@@ -1,0 +1,20 @@
+
+                        <a href="#zulip">Open source</a>
+        <h2 id="zulip">Zulip</h2>
+            <p>Zulip is an open-source team chat platform. I have contributed to the project by adding new features. My contribution was subtle and is not finished so this isn't on  the real website.</p>
+            <a href="#top">Back to top</a>
+
+        <h2 id="subboard">WCBN sub board</h2>
+        <p>WCBN is, again, the University of Michigan's student-run radio station. Occasionally students and community members are unable to attend their regularly scheduled programs and must ask other DJs to host their shows at the regular time.</p>
+        <p>The sub board was the station's solution to this; requests live on the website, can be posted with a valid DJ login, and mass emails are sent for new requests. However, the station's ever-changing backend has rendered its tech solutions useless many a time. Thus, I rebuilt this tool from scratch.</p>
+            <a href="#top">Back to top</a>
+
+
+        <h2 id="wcbn">WCBN app</h2>
+        <p>WCBN is the University of Michigan's student-run radio station. I am designing and implementing WCBN's streaming app. The GitHub is public for education and resume purposes.</p>
+        <a href="#top">Back to top</a>
+
+
+
+        <a href="#wcbn">iOS radio station app</a><br><br>
+        <a href="#subboard">Web app for an organization</a><br><br>
