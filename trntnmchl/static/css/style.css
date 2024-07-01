@@ -48,3 +48,16 @@
                 margin: 50px auto;
             }
         }
+
+        #links img {
+            max-width: 100px;
+            height: auto;
+            display: inline-block;
+        }
+
+        @media (max-width: 600px) {
+            #links img {
+                max-width: 80px;
+                margin-right: 2%;
+            }
+        }
