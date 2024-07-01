@@ -45,7 +45,7 @@
                 max-width: 80%;
                 height: auto;
                 display: block;
-                margin: 50px auto;
+                margin: 10px auto;
             }
         }
 
@@ -55,9 +55,9 @@
             display: inline-block;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 750px) {
             #links img {
-                max-width: 80px;
+                max-width: 10%;
                 margin-right: 2%;
             }
         }
