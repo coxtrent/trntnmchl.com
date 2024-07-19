@@ -11,7 +11,7 @@ def apple():
 
 @trntnmchl.app.route('/soundcloud')
 def soundcloud():
-    return flask.redirect("https://soundcloud.com/trentonmichael", code=302)
+    return flask.redirect("https://soundcloud.com/sunboyforever", code=302)
 
 @trntnmchl.app.route('/bandcamp')
 def bandcamp():
@@ -20,3 +20,7 @@ def bandcamp():
 @trntnmchl.app.route('/youtube')
 def youtube():
     return flask.redirect("https://www.youtube.com/channel/UCLimBHin2APkVTufIamLEOg", code=302)
+
+@trntnmchl.app.route('/new')
+def new():
+    return flask.redirect("https://soundcloud.com/sunboyforever/againstallreason", code=302)
