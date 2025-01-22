@@ -51,25 +51,15 @@
 
             var loadImg1 = new Promise(function(resolve) {
                 img1.onload = resolve;
-                img1.src = "static/images/see-you-in-june-yellow.webp";
+                img1.src = "static/images/18-diamonds.webp";
             });
 
             var loadImg2 = new Promise(function(resolve) {
                 img2.onload = resolve;
-                img2.src = "static/images/see-you-in-june-green.webp";
+                img2.src = "static/images/18-diamonds-alt.webp";
             });
 
-            var loadImg3 = new Promise(function(resolve) {
-                img3.onload = resolve;
-                img3.src = "static/images/see-you-in-june-pink.webp";
-            });
-
-            var loadImg4 = new Promise(function(resolve) {
-                img4.onload = resolve;
-                img4.src = "static/images/see-you-in-june-tan.webp";
-            });
-
-            Promise.all([loadImg1, loadImg2, loadImg3, loadImg4]).then(function() {
+            Promise.all([loadImg1, loadImg2]).then(function() {
                 // await promises, fetch album_art
                 var image = document.getElementById('album_art');
                 image.style.opacity = 0;
@@ -77,39 +67,23 @@
                 setInterval(function() {
                 var url = new URL(image.src);
                 var path = url.pathname;
-                if(path == "/static/images/see-you-in-june-green.webp") {
+                if(path == "/static/images/18-diamonds.webp") {
                 // if is alt album art, change to mario album art
                     setTimeout(function() {
-                        image.src = img3.src;
+                        image.src = img2.src;
                         image.style.opacity = 1;
-                        document.body.style.backgroundColor = "#d68c9c";
-                    }, 250);
-                }
-                else if(path == "/static/images/see-you-in-june-pink.webp") {
-                // if it is mario album art, change to main album art
-                    setTimeout(function() {
-                        image.src = img4.src;
-                        image.style.opacity = 1;
-                        document.body.style.backgroundColor = "#eac9a8";
-                    }, 250);
-                }
-                else if(path == "/static/images/see-you-in-june-tan.webp") {
-                // if it is mario album art, change to main album art
-                    setTimeout(function() {
-                        image.src = img1.src;
-                        image.style.opacity = 1;
-                        document.body.style.backgroundColor = "#ec865d";
+                        //document.body.style.backgroundColor = "#57070a";
                     }, 250);
                 }
                 else {
                 // it must be main album art, change to alt album art
                     setTimeout(function() {
-                        image.src = img2.src;
+                        image.src = img1.src;
                         image.style.opacity = 1;
-                        document.body.style.backgroundColor = "#298e5e";
+                        //document.body.style.backgroundColor = "#57070a";
                     }, 250);
                 }
-            }, 1250);
+            }, 2500);
             })
         }   
 
@@ -123,27 +97,26 @@
             var body = document.querySelector('body');
             body.style.marginRight = '0px'; // reset margin-right to 0
             // invert logos bc theyre just better that way
-            invertLogos(true);
+            //invertLogos(false);
             // get elements
             var album_art = document.getElementById('album_art');
             var links = document.getElementById('links');
 
             // external setTimeout -- fade in the cream background color and the sunboy logo
             setTimeout(function() {
-                document.body.style.backgroundColor = "#fffaaf";
+                document.body.style.backgroundColor = "#ff0000";
                 album_art.style.opacity = 1;
                 // internal setTimeout 1 -- fade the background color and the sunboy logo out
                 setTimeout(function() {
-                document.body.style.backgroundColor = "#ffffff";
                 album_art.style.opacity = 0;
-                }, 2250);
-            }, 250);
+                }, 3000);
+            }, 10);
             // internal setTimeout 2 -- fetch the album art and change it 
             setTimeout(function() {
             var real_art = new Image();
                 var load_real_art = new Promise(function(resolve) {
                     real_art.onload = resolve;
-                    real_art.src = "static/images/see-you-in-june-yellow.webp";
+                    real_art.src = "static/images/18-diamonds.webp";
                 });
             Promise.all([load_real_art]).then(function() {
                         album_art.src = real_art.src;
@@ -152,7 +125,7 @@
                             var navbar = document.querySelector('.navbar'); 
                             album_art.style.opacity = 1;
                             links.style.opacity = 1;
-                            document.body.style.backgroundColor = "#ec865d"
+                            document.body.style.backgroundColor = "#57070a"
                             navbar.style.opacity = '1';
                             navbar.style.pointerEvents = 'auto'; // Make the navbar clickable
                             body.style.marginRight = '150px'; // reset margin-right to 150px
@@ -168,9 +141,9 @@
 <body> 
     {% include 'navbar.html' %}
 <div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;"> 
-<img id="album_art" src="static/images/sunstone.webp" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 5%; transition: all 1s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
+<img id="album_art" src="static/images/millionshostage.webp" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 5%; transition: all 0s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
 </div>
 <div class="spacer"></div> <!-- Spacer div -->
-    {% include 'see-you-in-june-links.html' %}
+    {% include '18-diamonds-links.html' %}
 </body>
 </html>
