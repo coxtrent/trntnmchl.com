@@ -1,0 +1,23 @@
+<div id="links" style="text-align: center; transition: all 1.5s ease-in-out; left: 50px;">
+    <a href="https://open.spotify.com/album/3o5vQIoTAmnYlDx8TCv53O"style="text-decoration: none; font-size: 0;"> 
+        <img id="spotify" src="static/images/spotify_logo.webp" width="100" height="100" style="display: inline-block; margin-right: 25px;">
+    </a>
+    <a href="https://music.apple.com/us/album/sunboy-never/1793777288"style="text-decoration: none; font-size: 0;">
+    <img id="apple" src="static/images/red_apple.webp" width="100" height="100" style="display: inline-block; margin-right: 25px;">
+    </a>
+    <a href="https://soundcloud.com/sunboyforever/sets/sunboy-never" style="text-decoration: none; font-size: 0;">
+    <img id="soundcloud" src="static/images/soundcloud.svg" width="100" height="100" style="display: inline-block; margin-right: 25px;">
+    </a>
+</div>
+<script>    
+    var bandcampLogo = document.getElementById("bandcamp");
+    var soundcloudLogo = document.getElementById("soundcloud");
+    if(invert)  {
+        bandcampLogo.style.filter = "invert(1)";
+        soundcloudLogo.style.filter = "invert(1)";
+    }
+    else {
+        bandcampLogo.style.filter = "";
+        soundcloudLogo.style.filter = "";
+    }
+</script>

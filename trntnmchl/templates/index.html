@@ -1,151 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="static/js/invertLogos.js"></script>
+    <script src="invertLogos.js"></script>
     <style>
  
-        body {
-    background-color: #ffffff; /*2a9cb1; initial color */
-    transition: background-color 0.5s ease-in; /* transition effect */
-        }
-        body.colorMain {
-            background-color: #ffffff; /* new color */
-        }
-        body.colorYellow {
-            background-color: #ec865d;
-        }
-        body.colorPink {
-            background-color: #d68c9c;
-        }
-        body.colorGreen {
-            background-color: #298e5e;
-        }
-        body.colorTan {
-            background-color: #eac9a8;
-        }
+
         #album_art {
             max-width: 70%;
             height: auto;
             display: block;
             margin: 10px auto;
             transition: all 1s ease-in-out;
-            opacity: 0;
+            opacity: 100%;
         }
 
         #links {
-            opacity: 0;
+            opacity: 100%;
         }
     </style>
     <meta charset="UTF-8">
     <title>sunboyforever.</title>
     <link rel="icon" href="static/images/sunstone.webp">
     <link rel="stylesheet" href="static/css/style.css">
-    <script>
-
-        function changeArt() {
-            // pre-load all images
-            var img1 = new Image();
-            var img2 = new Image();
-            var img3 = new Image();
-            var img4 = new Image();
-
-            var loadImg1 = new Promise(function(resolve) {
-                img1.onload = resolve;
-                img1.src = "static/images/18-diamonds.webp";
-            });
-
-            var loadImg2 = new Promise(function(resolve) {
-                img2.onload = resolve;
-                img2.src = "static/images/18-diamonds-alt.webp";
-            });
-
-            Promise.all([loadImg1, loadImg2]).then(function() {
-                // await promises, fetch album_art
-                var image = document.getElementById('album_art');
-                image.style.opacity = 0;
-                // fetch url and parse the suffix
-                setInterval(function() {
-                var url = new URL(image.src);
-                var path = url.pathname;
-                if(path == "/static/images/18-diamonds.webp") {
-                // if is alt album art, change to mario album art
-                    setTimeout(function() {
-                        image.src = img2.src;
-                        image.style.opacity = 1;
-                        //document.body.style.backgroundColor = "#57070a";
-                    }, 250);
-                }
-                else {
-                // it must be main album art, change to alt album art
-                    setTimeout(function() {
-                        image.src = img1.src;
-                        image.style.opacity = 1;
-                        //document.body.style.backgroundColor = "#57070a";
-                    }, 250);
-                }
-            }, 2500);
-            })
-        }   
-
-        /* ONLOAD ANIMATION */ 
-        window.onload = function() {
-            // make navbar invisible and unclickable at start
-            document.getElementById('links').style.opacity = 0; 
-            var navbar = document.querySelector('.navbar');
-            navbar.style.opacity = '0';
-            navbar.style.pointerEvents = 'none';
-            var body = document.querySelector('body');
-            body.style.marginRight = '0px'; // reset margin-right to 0
-            // invert logos bc theyre just better that way
-            //invertLogos(false);
-            // get elements
-            var album_art = document.getElementById('album_art');
-            var links = document.getElementById('links');
-
-            // external setTimeout -- fade in the cream background color and the sunboy logo
-            setTimeout(function() {
-                document.body.style.backgroundColor = "#ff0000";
-                album_art.style.opacity = 1;
-                // internal setTimeout 1 -- fade the background color and the sunboy logo out
-                setTimeout(function() {
-                album_art.style.opacity = 0;
-                }, 3000);
-            }, 10);
-            // internal setTimeout 2 -- fetch the album art and change it 
-            setTimeout(function() {
-            var real_art = new Image();
-                var load_real_art = new Promise(function(resolve) {
-                    real_art.onload = resolve;
-                    real_art.src = "static/images/18-diamonds.webp";
-                });
-            Promise.all([load_real_art]).then(function() {
-                        album_art.src = real_art.src;
-                        // internal setTimeout 3 -- actually fade in the links, album art, and background
-                        setTimeout(function() {
-                            var navbar = document.querySelector('.navbar'); 
-                            album_art.style.opacity = 1;
-                            links.style.opacity = 1;
-                            document.body.style.backgroundColor = "#57070a"
-                            navbar.style.opacity = '1';
-                            navbar.style.pointerEvents = 'auto'; // Make the navbar clickable
-                            body.style.marginRight = '150px'; // reset margin-right to 150px
-                        }, 1500);
-                        changeArt();
-                    });
-                }, 3500);
-
-        }
-
-        </script>
 </head>
-<body> 
+<body>
     {% include 'navbar.html' %}
 <div style="display: block; margin-left: auto; margin-right: auto; margin-top: 17px;"> 
-<img id="album_art" src="static/images/millionshostage.webp" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 5%; transition: all 0s ease-in-out; opacity: 0;"> <!-- opacity 0.25s transition:-->
+<img id="album_art" src="static/images/sunboynever.webp" width="600" height="600" style="display: block; margin-left: auto; margin-right: auto; margin-top: 5%; transition: all 0s ease-in-out; opacity: 1;"> <!-- opacity 0.25s transition:-->
 </div>
 <div class="spacer"></div> <!-- Spacer div -->
-    {% include '18-diamonds-links.html' %}
+    {% include 'sunboy-never-links.html' %}
 </body>
+<script>invertLogos()</script>
 </html>
 
 <!--
